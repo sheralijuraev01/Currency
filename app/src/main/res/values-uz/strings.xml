@@ -1,0 +1,26 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Valyuta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_language">Tilni tanlang</string>
+    <string name="language">Tillar</string>
+    <string name="english_lang">English</string>
+    <string name="uzbek_lang">Uzbek</string>
+    <string name="select_currency">Valyutani tanlang</string>
+    <string name="convert_currency">Valyuta ayiraboshlash</string>
+    <string name="today">Bugun: </string>
+    <string name="convert_edit">Valyuta ayiraboshlash</string>
+    <string name="setting">Sozlamalar</string>
+    <string name="start">Boshlamoq</string>
+    <string name="cancel" tools:ignore="ButtonCase">Bekor qilmoq</string>
+    <string name="internet_message">Iltimos internetingizni tekshiring</string>
+    <string name="search_query">Valyuta izlash</string>
+    <string name="null_meaasge">Iltimos valyuta miqdorini kiriting</string>
+     <string name="change_default_currency">Valyuta tanlang</string>
+    <string name="save_changes">Saqlash</string>
+    <string name="exit_message">Dasturdan chiqishni hoylaysizmi ?</string>
+    <string name="no">Yo\'q</string>
+    <string name="yes">Ha</string>
+    <string name="format_message">Kiritilgan raqam formati xato</string>
+    <string name="last_update">Yangilanish: </string>
+</resources>
