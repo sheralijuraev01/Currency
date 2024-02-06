@@ -30,7 +30,6 @@ class AttentionDialog(
 
         }
 
-
         setCancelable(false)
         setContentView(binding.root)
 

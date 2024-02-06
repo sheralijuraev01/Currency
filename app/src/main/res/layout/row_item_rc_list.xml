@@ -1,50 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/recycler_ripple_bg"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingVertical="10dp"
+        android:layout_marginHorizontal="12dp"
         android:gravity="center_vertical"
-      android:layout_marginHorizontal="12dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="10dp">
+
         <ImageView
             android:id="@+id/currency_icon"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/flag_width"
+            android:layout_height="@dimen/flag_height"
             android:scaleType="centerCrop"
-            android:src="@drawable/uz"/>
+            android:src="@drawable/uz" />
+
         <TextView
             android:id="@+id/row_currency_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="UZS"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginStart="16dp"
-            android:textSize="20sp"/>
+            android:textSize="@dimen/d_text_normal"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/row_currency_desp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Uzbekistan Sum"
-            android:textColor="@color/text_color_2"
-
             android:layout_marginStart="30dp"
-            android:textSize="16sp"/>
+            android:text="Uzbekistan Sum"
+
+            android:textColor="@color/text_color_2"
+            android:textSize="@dimen/d_text_secondary_small" />
 
     </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginHorizontal="12dp"
-        android:background="@color/bottom_line_color"/>
-
+        android:background="@color/bottom_line_color" />
 
 
 </LinearLayout>

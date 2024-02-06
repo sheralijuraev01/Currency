@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/backLanguageBtn"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="@dimen/similar_item_size"
+            android:layout_height="@dimen/similar_item_size"
             android:layout_marginTop="1dp"
             android:background="@drawable/icon_background"
             android:paddingVertical="10dp"
@@ -33,7 +33,7 @@
             android:layout_marginStart="25dp"
             android:text="@string/select_language"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="@dimen/d_text_large"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -41,7 +41,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="40dp"
+        android:layout_marginHorizontal="@dimen/large_margin"
         android:layout_marginTop="24dp"
         android:background="#F0F0F0"
         app:cardCornerRadius="14dp">
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/language"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="@dimen/d_text_normal"
 
                 android:textStyle="bold" />
 
@@ -74,8 +74,8 @@
                 android:tag="0">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/flag_width"
+                    android:layout_height="@dimen/flag_height"
                     android:scaleType="centerCrop"
                     android:src="@drawable/gb" />
 
@@ -86,14 +86,14 @@
                     android:layout_weight="1"
                     android:text="@string/english_lang"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/d_text_normal"
                     android:textStyle="italic" />
 
                 <RadioButton
                     android:id="@+id/btn_radio_english"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.18"
+
                     android:buttonTint="@color/black"
 
                     tools:ignore="TouchTargetSizeCheck" />
@@ -107,12 +107,11 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-
                 android:tag="1">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/flag_width"
+                    android:layout_height="@dimen/flag_height"
                     android:scaleType="centerCrop"
                     android:src="@drawable/uz" />
 
@@ -123,15 +122,14 @@
                     android:layout_weight="1"
                     android:text="@string/uzbek_lang"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/d_text_normal"
                     android:textStyle="italic" />
 
                 <RadioButton
                     android:id="@+id/btn_radio_uzbek"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.18"
-                    android:buttonTint="@color/black"
+                     android:buttonTint="@color/black"
                     tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
@@ -148,7 +146,7 @@
                 android:text="@string/save_changes"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="19sp" />
+                android:textSize="@dimen/d_text_small" />
 
         </LinearLayout>
 

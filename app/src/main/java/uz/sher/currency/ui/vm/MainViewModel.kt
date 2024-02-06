@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val context: Context,
+
     private val repository: ConvertRepository,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
@@ -61,8 +61,7 @@ class MainViewModel @Inject constructor(
 
         } else {
             // internet yo'q
-            val networkText = context.resources.getText(R.string.internet_message)
-            currencies.postValue(Resource.Network(networkText.toString()))
+            currencies.postValue(Resource.Network())
         }
         return currencies
     }

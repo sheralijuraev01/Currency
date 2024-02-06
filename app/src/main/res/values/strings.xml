@@ -23,5 +23,8 @@
     <string name="yes">Yes</string>
     <string name="format_message">The entered number format is incorrect</string>
     <string name="last_update">Last update:</string>
+    <string name="point_right_message">You cannot enter more than 10 digits after the decimal point</string>
+    <string name="number_size_message">The value exceeded 15 digits</string>
+
 
 </resources>

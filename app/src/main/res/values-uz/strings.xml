@@ -23,4 +23,6 @@
     <string name="yes">Ha</string>
     <string name="format_message">Kiritilgan raqam formati xato</string>
     <string name="last_update">Yangilanish: </string>
+    <string name="point_right_message">O\'nlik xona vergulidan keyin 10 tadan ortiq raqam kiritib bo\'lmaydi</string>
+    <string name="number_size_message">Qiymat 15 xonalidan oshib ketdi</string>
 </resources>

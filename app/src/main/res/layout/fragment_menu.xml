@@ -13,7 +13,7 @@
         android:id="@+id/topMenuLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/secondary_margin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -25,14 +25,14 @@
             android:layout_weight="1"
             android:text="@string/select_currency"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="@dimen/d_text_large"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/setting_icon"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="1dp"
+            android:layout_width="@dimen/similar_item_size"
+            android:layout_height="@dimen/similar_item_size"
+
             android:layout_marginEnd="24dp"
             android:background="@drawable/icon_background"
             android:padding="7dp"
@@ -47,7 +47,7 @@
         android:layout_above="@+id/updateContainer"
         android:layout_below="@+id/topMenuLayout"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/normal_margin"
         app:cardCornerRadius="14dp">
 
         <RelativeLayout
@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 app:iconifiedByDefault="false"
+                app:theme="@style/AppSearchView"
                 app:queryHint="@string/search_query" />
 
             <ImageView
@@ -70,8 +71,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_below="@id/search_view"
-                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/not_found"
                 android:visibility="gone" />
 
@@ -80,8 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/search_view"
-                android:orientation="vertical"
                 android:clipToPadding="false"
+                android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/row_item_rc_list" />
 
@@ -93,9 +94,10 @@
                 android:background="@color/secondary_color"
                 android:gravity="center"
                 android:visibility="gone">
+
                 <ProgressBar
-                    android:layout_width="60dp"
-                    android:layout_height="60dp" />
+                    android:layout_width="@dimen/progress_bar_size"
+                    android:layout_height="@dimen/progress_bar_size" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -108,16 +110,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="24dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="@dimen/normal_margin"
         android:background="@drawable/ripple_progress_bg"
         android:paddingHorizontal="24dp"
         android:paddingVertical="10dp">
 
         <ImageView
             android:id="@+id/refreshIcon"
-            android:layout_width="20dp"
+            android:layout_width="@dimen/menu_refresh_icon_size"
+            android:layout_height="@dimen/menu_refresh_icon_size"
             android:layout_centerVertical="true"
-            android:layout_height="20dp"
             android:rotationX="180"
             android:src="@drawable/refresh" />
 
@@ -125,13 +128,12 @@
             android:id="@+id/updateDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_centerVertical="true"
-            android:text="@string/last_update"
             android:layout_centerInParent="true"
+            android:layout_marginStart="16dp"
+            android:gravity="center"
+            android:text="@string/last_update"
             android:textColor="@color/text_color_1"
-            android:textSize="16sp" />
+            android:textSize="@dimen/d_text_secondary_small" />
 
     </RelativeLayout>
 

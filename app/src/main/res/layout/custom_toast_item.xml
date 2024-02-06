@@ -6,7 +6,7 @@
     android:background="@drawable/custom_bg_color"
     android:paddingHorizontal="20dp"
     android:paddingVertical="10dp"
-    android:textSize="16sp"
+    android:textSize="@dimen/d_text_secondary_small"
     android:elevation="1dp"
     android:text="qonday"
     android:textColor="@color/black" />

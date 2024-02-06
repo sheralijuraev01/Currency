@@ -12,14 +12,14 @@
         android:id="@+id/convertTopContainer"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/secondary_margin"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/back_convert"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="@dimen/similar_item_size"
+            android:layout_height="@dimen/similar_item_size"
             android:layout_marginStart="24dp"
             android:layout_marginTop="1dp"
             android:background="@drawable/icon_background"
@@ -35,7 +35,7 @@
             android:layout_weight="1"
             android:text="@string/convert_currency"
             android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textSize="@dimen/d_text_large"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -46,24 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/convertTopContainer"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/small_margin"
         app:cardCornerRadius="14dp">
 
-        <LinearLayout
-            android:id="@+id/convertProgress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/secondary_color"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="16dp"
-            android:visibility="gone">
-
-            <ProgressBar
-                android:layout_width="60dp"
-                android:layout_height="60dp" />
-        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/convertContainer"
@@ -78,8 +63,8 @@
 
             <ImageView
                 android:id="@+id/select_flag"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/flag_width"
+                android:layout_height="@dimen/flag_height"
                 android:layout_marginEnd="30dp"
                 android:layout_toStartOf="@+id/select_currency_name"
                 android:src="@drawable/uz" />
@@ -92,17 +77,16 @@
                 android:layout_gravity="center_vertical"
                 android:text="UZS"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="@dimen/d_text_secondary_large"
                 android:textStyle="bold" />
 
 
             <ImageButton
                 android:id="@+id/selectCurrencyChange"
-                android:layout_width="50dp"
-                android:layout_height="35dp"
+                android:layout_width="@dimen/arrow_bottom_width"
+                android:layout_height="@dimen/arrow_bottom_height"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
-
                 android:layout_toEndOf="@+id/select_currency_name"
                 android:background="@drawable/ripple_progress_bg"
 
@@ -117,17 +101,17 @@
                 android:layout_below="@id/select_currency_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="@dimen/large_margin_bottom"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/select_currency_value"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="@dimen/convert_text_view_height"
                     android:layout_gravity="center_horizontal"
                     android:text="1530000000011111"
                     android:textColor="@color/text_color_1"
-                    android:textSize="22sp" />
+                    android:textSize="@dimen/d_currency_large_text" />
 
                 <View
                     android:layout_width="match_parent"
@@ -145,15 +129,15 @@
                 android:layout_gravity="center_horizontal"
                 android:text="MRK"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="@dimen/d_text_secondary_large"
                 android:textStyle="bold"
 
                 />
 
             <ImageButton
                 android:id="@+id/defaultCurrencyChange"
-                android:layout_width="50dp"
-                android:layout_height="35dp"
+                android:layout_width="@dimen/arrow_bottom_width"
+                android:layout_height="@dimen/arrow_bottom_height"
                 android:layout_below="@id/select_currency_container"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="10dp"
@@ -166,19 +150,20 @@
             <TextView
                 android:id="@+id/default_currency_value"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="@dimen/convert_text_view_height"
                 android:layout_below="@+id/default_currency_name"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:text="10.5"
                 android:textColor="@color/text_color_1"
-                android:textSize="22sp" />
+                android:textSize="@dimen/d_currency_large_text" />
+            />
 
             <ImageView
                 android:id="@+id/default_flag"
-                android:layout_width="40dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/flag_width"
+                android:layout_height="@dimen/flag_height"
                 android:layout_below="@id/select_currency_container"
                 android:layout_marginEnd="30dp"
                 android:layout_toStartOf="@id/default_currency_name"
@@ -195,13 +180,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/convertWrapContainer"
         android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="@dimen/normal_margin"
         app:cardCornerRadius="14dp">
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="320dp"
-
+            android:layout_height="@dimen/menu_grid_height"
             android:background="@color/secondary_color"
             android:columnCount="4"
             android:padding="10dp"
@@ -222,7 +206,7 @@
                 android:stateListAnimator="@null"
                 android:tag="7"
                 android:text="7"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_8"
@@ -238,7 +222,7 @@
                 android:stateListAnimator="@null"
                 android:tag="8"
                 android:text="8"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_9"
@@ -254,7 +238,7 @@
                 android:stateListAnimator="@null"
                 android:tag="9"
                 android:text="9"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <ImageButton
                 android:id="@+id/button_swipe"
@@ -268,8 +252,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/button_background"
                 android:elevation="2dp"
-
-                android:src="@drawable/swipe_vertical"
+                 android:src="@drawable/swipe_vertical"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
@@ -286,7 +269,7 @@
                 android:stateListAnimator="@null"
                 android:tag="4"
                 android:text="4"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_5"
@@ -302,7 +285,7 @@
                 android:stateListAnimator="@null"
                 android:tag="5"
                 android:text="5"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_6"
@@ -318,7 +301,7 @@
                 android:stateListAnimator="@null"
                 android:tag="6"
                 android:text="6"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <ImageButton
                 android:id="@+id/delete_last_value"
@@ -332,9 +315,9 @@
 
                 android:background="@drawable/calculator_delete_button_bg"
                 android:elevation="2dp"
-                android:padding="20dp"
+
                 android:src="@drawable/delete_icon"
-                android:textSize="30sp"
+
                 tools:ignore="SpeakableTextPresentCheck" />
 
 
@@ -352,7 +335,7 @@
                 android:stateListAnimator="@null"
                 android:tag="1"
                 android:text="1"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_2"
@@ -368,7 +351,7 @@
                 android:stateListAnimator="@null"
                 android:tag="2"
                 android:text="2"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_3"
@@ -384,7 +367,7 @@
                 android:stateListAnimator="@null"
                 android:tag="3"
                 android:text="3"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/button_clear"
@@ -403,7 +386,7 @@
                 android:stateListAnimator="@null"
                 android:text="C"
                 android:textColor="#D45959"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/number_0"
@@ -420,7 +403,7 @@
                 android:stateListAnimator="@null"
                 android:tag="0"
                 android:text="0"
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
             <Button
                 android:id="@+id/button_point"
@@ -436,7 +419,7 @@
                 android:stateListAnimator="@null"
                 android:tag="10"
                 android:text="."
-                android:textSize="30sp" />
+                android:textSize="@dimen/d_text_third_large" />
 
 
         </GridLayout>

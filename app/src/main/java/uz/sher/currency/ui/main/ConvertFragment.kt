@@ -1,17 +1,19 @@
 package uz.sher.currency.ui.main
 
+
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import uz.sher.currency.MainActivity
 import uz.sher.currency.R
 import uz.sher.currency.adapters.MenuAdapter
 import uz.sher.currency.data.remote.models.CurrencyItem
@@ -21,8 +23,10 @@ import uz.sher.currency.util.constans.Constants.Companion.BOTTOM_CURRENCY
 import uz.sher.currency.util.constans.Constants.Companion.CHOOSE_CURRENCY
 import uz.sher.currency.util.constans.Constants.Companion.LIST_CURRENCY
 import uz.sher.currency.util.constans.Constants.Companion.TOP_CURRENCY
+import uz.sher.currency.util.functions.Functions.checkNumberLength
+import uz.sher.currency.util.functions.Functions.checkPointRightCondition
+import uz.sher.currency.util.functions.Functions.formatNumber
 import uz.sher.currency.util.functions.Functions.formatStringTop
-import uz.sher.currency.util.functions.Functions.formatStringValue
 import uz.sher.currency.util.functions.Functions.getFlag
 import java.util.Locale
 
@@ -39,7 +43,6 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
     private var bottomCurrencyName = "UZS"
     private var topCurrencyValue: String = "1.0"
     private var bottomCurrencyValue = 1.0
-
     private var editTopValue = ""
     private lateinit var customToast: CustomToast
 
@@ -84,7 +87,6 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
         }
 
         binding.buttonSwipe.setOnClickListener {
-
             swipeCurrency()
         }
 
@@ -132,8 +134,23 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
 
     private fun setBottomCurrencyItem() {
         binding.defaultCurrencyName.text = bottomCurrencyName
-        val value = formatStringValue(bottomCurrencyValue.toString())
+
+        val value =formatNumber(bottomCurrencyValue)
+//        if (checkNumberLength(bottomCurrencyValue.toString())) {
+//            bottomCurrencyValue.toString()
+//        } else {
+//            formatNumber(bottomCurrencyValue)
+//        }
+
+//        Toast.makeText(
+//            binding.root.context,
+//            checkNumberLength(bottomCurrencyValue.toString()).toString(),
+//            Toast.LENGTH_SHORT
+//        ).show()
+
+
         adaptiveFontSize(value, binding.defaultCurrencyValue)
+//        binding.defaultCurrencyValue.text = bottomCurrencyValue.toString()
         binding.defaultCurrencyValue.text = value
         binding.defaultFlag.setImageResource(getFlag(bottomCurrencyName))
     }
@@ -162,7 +179,7 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
 
         // bottomCurrency ni yangi qiymati
         // faqat bottom currencini  qiymati o'zgaradi
-        determineNumberStatus()
+
 
         bottomCurrencyValue = (topValue / bottomValue) * topCurrencyValue.toDouble()
         setCurrenciesValues()
@@ -172,8 +189,6 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
 
 
     private fun dialogCurrency(currencyType: String) {
-
-
         val dialog = AlertDialog.Builder(binding.root.context).create()
         val view = layoutInflater.inflate(R.layout.currency_dialog, null)
         dialog.setView(view)
@@ -183,6 +198,7 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
         val dialogRcView = view.findViewById<RecyclerView>(R.id.dialog_currency_rc_view)
         val dialogSearchView = view.findViewById<SearchView>(R.id.dialog_search_view)
         notFound = view.findViewById<ImageView>(R.id.not_found_dialog)
+
         cancel.setOnClickListener {
             dialog.dismiss()
         }
@@ -209,14 +225,11 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
                     MenuAdapter.OnItemCurrencyClickListiner {
                     override fun onItemClick(position: Int) {
                         calculateCurrency(currencyType, filterList[position].ccy)
-
                         dialog.dismiss()
                     }
-
                 })
                 return true
             }
-
         })
 
 
@@ -319,7 +332,7 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
         editTopValue = ""
         topCurrencyValue = "1.0"
         calculateCurrency(TOP_CURRENCY, topCurrencyName)
-        determineNumberStatus()
+
     }
 
     private fun deleteLastValue() {
@@ -346,14 +359,13 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
             }
 
             calculateCurrency(TOP_CURRENCY, topCurrencyName)
-            determineNumberStatus()
         }
 
     }
 
 
     override fun onClick(v: View?) {
-        determineNumberStatus()
+        val message = determineNumberStatus()
         if (numberStatus) {
             val button = v as Button
             val tagInt: Int = Integer.parseInt(button.tag.toString())
@@ -371,7 +383,8 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
                     newTopValue = "."
                 }
             } else {
-                newTopValue = tagInt.toString()
+                if(editTopValue=="0") editTopValue=""
+                 newTopValue = tagInt.toString()
             }
 
             editTopValue += newTopValue
@@ -380,9 +393,14 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
 
 
             topCurrencyValue = editTopValue
+
+
+
             calculateCurrency(TOP_CURRENCY, topCurrencyName)
         } else {
-            customToast.showToast("Qiymat 15 xonalidan oshib ketdi")
+            customToast.showToast(message)
+            numberStatus = true
+
         }
 
     }
@@ -390,27 +408,42 @@ class ConvertFragment : Fragment(R.layout.fragment_convert), View.OnClickListene
 
     private fun adaptiveFontSize(value: String, view: TextView) {
         val textView = view as TextView
-        if (value.length > 18) {
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18F)
+
+        if (value.length >= 18) {
+            textView.textSize=resources.getDimension(R.dimen.d_currency_small_text)
         } else if (value.length in 13..17) {
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+            textView.textSize=resources.getDimension(R.dimen.d_currency_normal_text)
         } else {
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22F)
+            textView.textSize=resources.getDimension(R.dimen.d_currency_large_text)
 
         }
     }
 
-    private fun determineNumberStatus() {
-        var topValue = binding.selectCurrencyValue.text.toString().trim()
+    private fun determineNumberStatus(): String {
+        val topValue = binding.selectCurrencyValue.text.toString().trim()
+        val pointRightStatus = checkPointRightCondition(topValue)
+        var result = ""
+        val topResult = StringBuilder()
+        topValue.forEach {
+            if (it != ' ') topResult.append(it)
+        }
 
-        topValue = if (topValue.contains('.'))
-            topValue.split(".")[0] else topValue
+        topResult.toString()
 
-        var bottomValue = binding.defaultCurrencyValue.text.toString().trim()
-        bottomValue = if (bottomValue.contains('.'))
-            bottomValue.split('.')[0] else bottomValue
 
-        numberStatus = !(topValue.length > 18 || bottomValue.length > 18)
+        val limitNumber = if (topResult.contains('.')) 16
+        else 15
+
+
+        if (pointRightStatus != "") {
+            numberStatus = false
+            result = binding.root.context.getString(R.string.point_right_message)
+        } else if (topResult.length >= limitNumber) {
+            numberStatus = false
+            result = binding.root.context.getString(R.string.number_size_message)
+        }
+
+        return result
     }
 
 

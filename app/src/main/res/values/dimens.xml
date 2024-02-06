@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Text views dimens-->
+
+    <dimen name="d_text_normal">20sp</dimen>
+    <dimen name="d_text_secondary_normal">22sp</dimen>
+    <dimen name="d_text_small">18sp</dimen>
+    <dimen name="d_text_secondary_small">16sp</dimen>
+    <dimen name="d_text_large">24sp</dimen>
+    <dimen name="d_text_secondary_large">25sp</dimen>
+    <dimen name="d_text_third_large">30sp</dimen>
+
+    <dimen name="d_currency_small_text">18sp</dimen>
+    <dimen name="d_currency_normal_text">20sp</dimen>
+    <dimen name="d_currency_large_text">22sp</dimen>
+
+
+    <!--    splash items-->
+
+    <dimen name="splash_icon_size">200dp</dimen>
+
+    <!--     flag size-->
+
+    <dimen name="flag_width">40dp</dimen>
+    <dimen name="flag_height">30dp</dimen>
+
+
+    <!--    similar icon size -->
+
+    <dimen name="similar_item_size">35dp</dimen>
+
+    <dimen name="menu_refresh_icon_size">20dp</dimen>
+
+    <dimen name="arrow_bottom_width">50dp</dimen>
+    <dimen name="arrow_bottom_height">35dp</dimen>
+    <dimen name="convert_text_view_height">30dp</dimen>
+
+    <dimen name="menu_grid_height">320dp</dimen>
+
+    <dimen name="not_found_icon_size">100dp</dimen>
+    <dimen name="att_dialog_icon_size">300dp</dimen>
+
+
+
+    <dimen name="search_view_icon_size">25dp</dimen>
+
+
+    <dimen name="progress_bar_size">60dp</dimen>
+
+    <!--     margins-->
+
+    <dimen name="normal_margin">24dp</dimen>
+    <dimen name="secondary_margin">16dp</dimen>
+    <dimen name="large_margin">40dp</dimen>
+    <dimen name="small_margin">20dp</dimen>
+
+
+    <dimen name="large_margin_bottom">30dp</dimen>
+
+
+    <!--    padding-->
+    <dimen name="normal_padding">24dp</dimen>
+
+
+</resources>

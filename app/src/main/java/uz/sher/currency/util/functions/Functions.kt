@@ -1,7 +1,11 @@
 package uz.sher.currency.util.functions
 
+import android.util.Log
 import uz.sher.currency.R
 import java.math.BigDecimal
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.Locale
 
 object Functions {
 
@@ -112,32 +116,13 @@ object Functions {
         else reverseString(newText.toString()) + newSecondPart
     }
 
-    fun formatStringValue(valueNumber: String): String {
-        val value = BigDecimal(valueNumber).toString()
-        val newText = StringBuilder()
-        var reverseText = ""
-        var newSecondPart = ""
-        if (value.contains(".")) {
-            val partArray = value.split('.')
-            reverseText = reverseString(partArray[0])
-            newSecondPart = partArray[1]
 
-        } else {
-            reverseText = reverseString(value)
-        }
-        for (i in reverseText.indices) {
-            if (i % 3 == 0 && i != 0) newText.append(" ")
-            newText.append(reverseText[i])
-        }
-
-        if (newSecondPart.length > 2 )
-            newSecondPart = newSecondPart.substring(0, 2)
-
-
-
-        return if (value.contains("."))
-            reverseString(newText.toString()) + "." + newSecondPart
-        else reverseString(newText.toString()) + newSecondPart
+    fun formatNumber(number: Double): String {
+        val decimalFormat = DecimalFormat("#,###.##")
+        val symbols = DecimalFormatSymbols(Locale.getDefault())
+        symbols.groupingSeparator = ' ' // bo'sh joy belgisini o'zgartiring
+        decimalFormat.decimalFormatSymbols = symbols
+        return decimalFormat.format(number)
     }
 
     private fun reverseString(input: String): String {
@@ -146,5 +131,26 @@ object Functions {
             reversed += input[i]
         }
         return reversed
+    }
+
+    fun checkNumberLength(number: String): Boolean {
+        val value = BigDecimal(number).toString()
+        val partArray = value.split('.')
+        val leftNumber = if (value.contains('.'))
+            partArray[0]
+        else value
+        Log.e("valueNumber", number)
+
+//        return  leftNumber.length>15 || (leftNumber.length==1 && leftNumber[0]!='0')
+        return  leftNumber.length>15
+    }
+
+
+    fun checkPointRightCondition(str: String): String {
+        if (!str.contains('.')) return ""
+        val array = str.split('.')
+        val rightString = array[1]
+
+        return if (rightString.length < 10) "" else "_"
     }
 }

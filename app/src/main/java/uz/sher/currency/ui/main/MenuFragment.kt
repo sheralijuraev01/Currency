@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
+import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -26,7 +27,7 @@ import java.util.Locale
 
 
 @AndroidEntryPoint
-class MenuFragment : Fragment(R.layout.fragment_menu)  {
+class MenuFragment : Fragment(R.layout.fragment_menu) {
     private var _binding: FragmentMenuBinding? = null
     private val binding get() = _binding!!
     private var list: MutableList<CurrencyItem> = ArrayList()
@@ -46,7 +47,12 @@ class MenuFragment : Fragment(R.layout.fragment_menu)  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMenuBinding.bind(view)
-
+//
+        val searchIcon: ImageView = binding.searchView.findViewById(androidx.appcompat.R.id.search_mag_icon)
+        val layoutParams = searchIcon.layoutParams
+        layoutParams.width = resources.getDimensionPixelOffset(R.dimen.search_view_icon_size)
+        layoutParams.height = resources.getDimensionPixelOffset(R.dimen.search_view_icon_size)
+        searchIcon.layoutParams = layoutParams
 
 
         currencyObserve()
@@ -94,7 +100,7 @@ class MenuFragment : Fragment(R.layout.fragment_menu)  {
             when (it) {
                 is Resource.Failure -> menuFailureObserve(it.t)
                 is Resource.Loading -> menuLoadingObserve()
-                is Resource.Network -> menuNetworkObserve(it.t)
+                is Resource.Network -> menuNetworkObserve()
                 is Resource.Success -> menuSuccessObserve(it.data)
             }
         }
@@ -108,14 +114,16 @@ class MenuFragment : Fragment(R.layout.fragment_menu)  {
         this.list.addAll(dataList)
         menuAdapter.updateAdapterItems(list, lang)
         binding.menuCurrencyRcView.adapter = menuAdapter
-        val text=binding.root.context.getString(R.string.last_update)
+        val text = binding.root.context.getString(R.string.last_update)
         binding.updateDate.text = "$text ${list[0].date}"
         clickListItem(list)
     }
 
-    private fun menuNetworkObserve(message: String) {
+    private fun menuNetworkObserve() {
         unProgress()
-        errorDialog(message, R.raw.no_internet_connection)
+        val networkText = resources.getText(R.string.internet_message).toString()
+
+        errorDialog(networkText, R.raw.no_internet_connection)
     }
 
 
@@ -180,7 +188,6 @@ class MenuFragment : Fragment(R.layout.fragment_menu)  {
             }
         })
     }
-
 
 
     private fun navigateConvertFragment(currencyName: String) {
