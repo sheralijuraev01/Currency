@@ -1,6 +1,8 @@
 package uz.sher.currency.di
 
 import android.content.Context
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +30,12 @@ object AppModule {
     @Provides
     @Singleton
     fun provideBaseUrl(): String = "https://cbu.uz"
+
+    @Provides
+    @Singleton
+    fun provideAppUpdateManager(@ApplicationContext context: Context): AppUpdateManager =
+        AppUpdateManagerFactory.create(context)
+
 
     @Provides
     @Singleton
